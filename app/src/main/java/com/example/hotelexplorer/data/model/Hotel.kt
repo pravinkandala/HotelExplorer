@@ -56,6 +56,7 @@ data class HotelListResponse(
             val propertyImage: PropertyImage? = null,
             val offerBadge: OfferBadge? = null,
             val price: PropertyPrice? = null,
+            val reviews: Reviews? = null,
         )
 
         data class Availability(
@@ -99,5 +100,10 @@ data class HotelListResponse(
                 val value: String
             )
         }
+
+        data class Reviews (
+            val score: Double,
+            val total: Long
+        )
     }
 }

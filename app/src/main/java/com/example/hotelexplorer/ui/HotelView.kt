@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -40,6 +41,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHost
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.hotelexplorer.R
@@ -49,6 +52,7 @@ import com.example.hotelexplorer.ui.viewmodel.HotelSearchViewModel
 @Composable
 fun HotelSearchScreen(
     viewModel: HotelSearchViewModel,
+    navController: NavController
 ) {
     val hotels by viewModel.hotels.observeAsState(emptyList())
     val isLoading by viewModel.isLoading.observeAsState(false)
@@ -88,12 +92,17 @@ fun HotelSearchScreen(
                 if (isLoading) {
                     CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                 } else if (hotels.isEmpty()) {
-                    Text(text = stringResource(R.string.no_hotels_found), modifier = Modifier.align(Alignment.Center))
+                    Text(
+                        text = stringResource(R.string.no_hotels_found),
+                        modifier = Modifier.align(Alignment.Center)
+                    )
                 } else {
                     LazyColumn {
                         val size = hotels.size
-                        items(size) { hotel ->
-                            HotelListItem(hotel = hotels[hotel])
+                        items(size) { index ->
+                            HotelListItem(
+                                hotel = hotels[index],
+                                onHotelItemClick = { navController.navigate("hotelDetailScreen/${hotels[index].id}") })
                         }
                     }
                 }
@@ -101,11 +110,11 @@ fun HotelSearchScreen(
         },
         backgroundColor = Color.White
     )
-
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun HotelListItem(hotel: Property) {
+fun HotelListItem(hotel: Property, onHotelItemClick: (Property) -> Unit) {
     val context = LocalContext.current
     val imageSize = 120.dp
     Card(
@@ -114,7 +123,8 @@ fun HotelListItem(hotel: Property) {
             .fillMaxWidth()
             .height(imageSize + 48.dp),
         shape = RoundedCornerShape(16.dp),
-        elevation = 8.dp
+        elevation = 8.dp,
+        onClick = { onHotelItemClick(hotel) }
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
