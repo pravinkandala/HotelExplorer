@@ -12,7 +12,7 @@ interface HotelSearchApi {
 
     @GET("locations/v3/search")
     suspend fun searchRegions(
-        @Query("q") destination: String,
+        @Query("q") destination: String
     ): SearchResult
 
     @POST("properties/v2/list")

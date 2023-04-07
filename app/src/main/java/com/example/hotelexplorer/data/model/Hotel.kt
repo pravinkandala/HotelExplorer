@@ -17,7 +17,7 @@ data class HotelListRequest(
     val rooms: List<Room>,
     val resultsStartingIndex: Int,
     val resultsSize: Int,
-    val sort: String,
+    val sort: String
 ) {
     data class Destination(
         val regionId: String
@@ -47,7 +47,7 @@ data class HotelListResponse(
     )
 
     data class PropertySearch(
-        val properties: List<Property>,
+        val properties: List<Property>
     ) {
         data class Property(
             val id: String? = null,
@@ -56,7 +56,7 @@ data class HotelListResponse(
             val propertyImage: PropertyImage? = null,
             val offerBadge: OfferBadge? = null,
             val price: PropertyPrice? = null,
-            val reviews: Reviews? = null,
+            val reviews: Reviews? = null
         )
 
         data class Availability(
@@ -64,7 +64,7 @@ data class HotelListResponse(
         )
 
         data class PropertyImage(
-            val image: Image,
+            val image: Image
         )
 
         data class Image(
@@ -76,7 +76,7 @@ data class HotelListResponse(
             val secondary: Ary? = null
         ) {
             data class Ary(
-                val text: String,
+                val text: String
             )
         }
 
@@ -88,7 +88,7 @@ data class HotelListResponse(
                 val lineItems: List<LineItem>
             ) {
                 data class LineItem(
-                    val price: LineItemPrice? = null,
+                    val price: LineItemPrice? = null
                 ) {
                     data class LineItemPrice(
                         val formatted: String
@@ -101,7 +101,7 @@ data class HotelListResponse(
             )
         }
 
-        data class Reviews (
+        data class Reviews(
             val score: Double,
             val total: Long
         )

@@ -11,8 +11,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.hotelexplorer.data.model.HotelListRequest
 import com.example.hotelexplorer.data.model.HotelListResponse.PropertySearch.Property
 import com.example.hotelexplorer.repository.HotelRepository
-import java.time.LocalDate
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 
 class HotelSearchViewModel(private val hotelRepository: HotelRepository) : ViewModel() {
 

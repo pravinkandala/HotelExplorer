@@ -4,13 +4,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.AppBarDefaults
@@ -37,12 +35,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.NavHost
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.hotelexplorer.R
@@ -102,7 +97,8 @@ fun HotelSearchScreen(
                         items(size) { index ->
                             HotelListItem(
                                 hotel = hotels[index],
-                                onHotelItemClick = { navController.navigate("hotelDetailScreen/${hotels[index].id}") })
+                                onHotelItemClick = { navController.navigate("hotelDetailScreen/${hotels[index].id}") }
+                            )
                         }
                     }
                 }
@@ -169,5 +165,3 @@ fun HotelListItem(hotel: Property, onHotelItemClick: (Property) -> Unit) {
         }
     }
 }
-
-
