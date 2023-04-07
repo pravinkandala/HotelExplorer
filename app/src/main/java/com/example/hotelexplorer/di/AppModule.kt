@@ -22,5 +22,4 @@ val appModule = module {
             hotelRepository = get()
         )
     }
-
 }
