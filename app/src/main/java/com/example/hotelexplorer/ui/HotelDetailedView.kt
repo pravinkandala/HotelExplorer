@@ -46,7 +46,7 @@ fun HotelDetailPage(hotel: Property?, navController: NavController) {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "Something went wrong",
+                text = stringResource(R.string.no_detail),
                 style = MaterialTheme.typography.h6
             )
         }
