@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HotelExplorer</string>
+    <string name="no_hotels_found">No hotels found</string>
+    <string name="search_bar_hint">Search location</string>
 </resources>
